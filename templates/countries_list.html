@@ -5,13 +5,21 @@
     <title>Список стран</title>
 </head>
 <body>
-    <h1>Список стран:</h1>
-    <ul>
-        {% for country in countries %}
-              <li><a href="{% url 'country-detail' country %}">{{ country }}</a></li>
+    <h1>Алфавитный список стран:</h1>
+    <div class="alphabet">
+        {% for char in alphabet %}
+            <a href="{% url 'filtered-countries' char %}">{{ char }}</a>  
         {% endfor %}
-    </ul>
+    </div>
+    <hr />
+    <h2>Полный список стран:</h2>
+    <ol>
+        {% for country in countries %}
+            <li><a href="{% url 'country-detail' country %}">{{ country }}</a></li>
+        {% endfor %}
+    </ol>
 
+    
     <a href="{% url 'main-page' %}">Вернуться на главную</a>
 </body>
 </html>
