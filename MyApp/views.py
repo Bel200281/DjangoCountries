@@ -38,3 +38,13 @@ def country_detail_view(request, country):
 def filtered_countries_view(request, letter):
     filtered_countries = [c for c in countries if c.startswith(letter)]
     return render(request, 'filtered_countries.html', {"letter": letter, "countries": filtered_countries})
+
+def all_languages_view(request):
+    """Возвращает уникальный список всех языков"""
+    unique_languages = set()
+    for langs in languages_by_country.values():
+        unique_languages.update(langs)
+    return render(request, 'all_languages.html', {'languages': list(unique_languages)})
+
+def main_page(request):
+    return render(request, 'main_page.html', {})
