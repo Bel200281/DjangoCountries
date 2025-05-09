@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страны, говорящие на языке "{{ language }}"</title>
+</head>
+<body>
+    <h1>Страны, говорящие на языке "{{ language }}":</h1>
+    <ul>
+        {% for country in countries %}
+            <li>{{ country }}</li>
+        {% empty %}
+            <li>Нет стран, говорящих на этом языке.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'all-languages' %}">Вернуться ко всем языкам</a>
+</body>
+</html>

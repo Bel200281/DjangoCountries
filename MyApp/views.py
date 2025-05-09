@@ -39,6 +39,17 @@ def filtered_countries_view(request, letter):
     filtered_countries = [c for c in countries if c.startswith(letter)]
     return render(request, 'filtered_countries.html', {"letter": letter, "countries": filtered_countries})
 
+
+def language_details_view(request, language):
+    """
+    Возвращает список стран, говорящих на данном языке
+    """
+    speaking_countries = []
+    for country, langs in languages_by_country.items():
+        if language in langs:
+            speaking_countries.append(country)
+    return render(request, 'language_details.html', {'language': language, 'countries': speaking_countries})
+
 def all_languages_view(request):
     """Возвращает уникальный список всех языков"""
     unique_languages = set()
@@ -46,5 +57,5 @@ def all_languages_view(request):
         unique_languages.update(langs)
     return render(request, 'all_languages.html', {'languages': list(unique_languages)})
 
-def main_page(request):
-    return render(request, 'main_page.html', {})
+
+
