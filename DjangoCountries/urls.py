@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('all-languages/', all_languages_view, name='all-languages'),
 
-     path('language/<str:language>/', language_details_view, name='language-details'),
+    path('language/<str:language>/', language_details_view, name='language-details'),
 
     path('<str:country>/', country_detail_view, name='country-detail'), 
 

@@ -14,12 +14,44 @@
     <hr />
     <h2>Полный список стран:</h2>
     <ol>
-        {% for country in countries %}
+        {% for country in full_countries %}
             <li><a href="{% url 'country-detail' country %}">{{ country }}</a></li>
         {% endfor %}
     </ol>
 
-    
-    <a href="{% url 'main-page' %}">Вернуться на главную</a>
+
+    <h2>Страны на текущей странице:</h2>
+    <ol>
+        {% for country in paginated_countries %}
+            <li><a href="{% url 'country-detail' country %}">{{ country }}</a></li>
+        {% endfor %}
+    </ol>
+
+
+
+
+
+<!-- Меню пагинации -->
+<nav aria-label="Страницы стран">
+    <ul class="pagination justify-content-center">
+        {% if current_page != 1 %}
+            <li class="page-item"><a class="page-link" href="?page=1">«</a></li>
+        {% endif %}
+
+        {% for i in pages_numbers %}
+            <li class="page-item {% if i == current_page %} active {% endif %}">
+                <a class="page-link" href="?page={{i}}">{{i}}</a>
+            </li>
+        {% endfor %}
+
+        {% if current_page != total_pages %}
+            <li class="page-item"><a class="page-link" href="?page={{total_pages}}">»</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<a href="{% url 'main-page' %}">Вернуться на главную</a>
+
+
 </body>
 </html>
