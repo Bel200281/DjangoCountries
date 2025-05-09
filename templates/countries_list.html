@@ -6,10 +6,12 @@
 </head>
 <body>
     <h1>Список стран:</h1>
-    <ol>
+    <ul>
         {% for country in countries %}
-            <li>{{ country }}</li>
+              <li><a href="{% url 'country-detail' country %}">{{ country }}</a></li>
         {% endfor %}
-    </ol>
+    </ul>
+
+    <a href="{% url 'main-page' %}">Вернуться на главную</a>
 </body>
 </html>
